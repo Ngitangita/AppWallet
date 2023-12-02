@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS "devise" (
     rate_change FLOAT,
     devise_symbol VARCHAR(255),
     account_id INT,
-    FOREIGN KEY (account_id) REFERENCES "account"(id)
+    FOREIGN KEY (account_id) REFERENCES "account"(id) ON DELETE CASCADE
     );
 
 CREATE TABLE IF NOT EXISTS "transaction" (
@@ -22,5 +22,5 @@ CREATE TABLE IF NOT EXISTS "transaction" (
      type VARCHAR(255),
     transaction_date TIMESTAMP,
     account_id INT,
-    FOREIGN KEY (account_id) REFERENCES "account"(id)
+    FOREIGN KEY (account_id) REFERENCES "account"(id) ON DELETE CASCADE
     );
