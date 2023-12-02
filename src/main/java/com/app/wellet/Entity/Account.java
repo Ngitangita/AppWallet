@@ -1,6 +1,7 @@
 package com.app.wellet.Entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,97 +11,86 @@ public class Account {
     private String accountType;
     private LocalDateTime openDate;
     private Long accountNumber;
-    private Devise devise;
     private List<Transaction> transactions;
 
-    public Integer getId(){
+    public Account(Integer id, Float sold, String accountType, LocalDateTime openDate, Long accountNumber) {
+        this.id = id;
+        this.sold = sold;
+        this.accountType = accountType;
+        this.openDate = openDate;
+        this.accountNumber = accountNumber;
+        this.transactions = new ArrayList<>();
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Float getSold(){
+    public Float getSold() {
         return sold;
     }
 
-    public void setSold(Float sold){
+    public void setSold(Float sold) {
         this.sold = sold;
     }
 
-    public String getAccountType(){
+    public String getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(String accountType){
+    public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
 
-    public LocalDateTime getOpenDate(){
+    public LocalDateTime getOpenDate() {
         return openDate;
     }
 
-    public void setOpenDate(LocalDateTime openDate){
+    public void setOpenDate(LocalDateTime openDate) {
         this.openDate = openDate;
     }
 
-    public Long getAccountNumber(){
+    public Long getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(Long accountNumber){
+    public void setAccountNumber(Long accountNumber) {
         this.accountNumber = accountNumber;
     }
 
-    public Devise getDevise(){
-        return devise;
-    }
-
-    public void setDevise(Devise devise){
-        this.devise = devise;
-    }
-
-    public List<Transaction> getTransactions(){
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(List<Transaction> transactions){
-        this.transactions = transactions;
-    }
-
-    public Account(Integer id, Float sold, String accountType, LocalDateTime openDate, Long accountNumber, Devise devise, List<Transaction> transactions){
-        this.id = id;
-        this.sold = sold;
-        this.accountType = accountType;
-        this.openDate = openDate;
-        this.accountNumber = accountNumber;
-        this.devise = devise;
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass ( ) != o.getClass ( )) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals ( id, account.id ) && Objects.equals ( sold, account.sold ) && Objects.equals ( accountType, account.accountType ) && Objects.equals ( openDate, account.openDate ) && Objects.equals ( accountNumber, account.accountNumber ) && Objects.equals ( devise, account.devise ) && Objects.equals ( transactions, account.transactions );
+        return Objects.equals(id, account.id) && Objects.equals(sold, account.sold) && Objects.equals(accountType, account.accountType) && Objects.equals(openDate, account.openDate) && Objects.equals(accountNumber, account.accountNumber) && Objects.equals(transactions, account.transactions);
     }
 
     @Override
-    public int hashCode(){
-        return Objects.hash ( id, sold, accountType, openDate, accountNumber, devise, transactions );
+    public int hashCode() {
+        return Objects.hash(id, sold, accountType, openDate, accountNumber, transactions);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Account{" +
                 "id=" + id +
                 ", sold=" + sold +
                 ", accountType='" + accountType + '\'' +
                 ", openDate=" + openDate +
                 ", accountNumber=" + accountNumber +
-                ", devise=" + devise +
                 ", transactions=" + transactions +
                 '}';
     }
