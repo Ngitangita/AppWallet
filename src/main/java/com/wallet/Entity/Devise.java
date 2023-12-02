@@ -1,4 +1,4 @@
-package org.example.Entity;
+package  com.wallet.Entity;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package org.example.Service;
+package com.wallet.Service;
 
 public class AccountService {
 }
