@@ -1,8 +1,8 @@
-package com.app.wellet.Repository;
+package com.app.wellet.Service;
 
 import java.util.List;
 
-public interface ServiceCrudOperations<T, L> {
+public interface ServiceCrudOperations<T, L>{
     List<T> findAll();
 
     List<T> saveAll(List<T> toSave);
