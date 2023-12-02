@@ -2,24 +2,25 @@ package com.app.wellet.Service;
 
 import java.util.List;
 
-public interface ServiceCrudOperations<T, L>{
-    List<T> findAll();
 
-    List<T> saveAll(List<T> toSave);
+public interface ServiceCrudOperations<S,C, L> {
+    List<S> findAll();
 
-    List<T> updateAll(List<T> toUpdate);
+    List<S> saveAll(List<C> toSave);
 
-
-    T saveByEntity(T toSave);
+    List<S> updateAll(List<C> toUpdate);
 
 
-    T deleteByEntity(T toDelete);
+    S saveByEntity(C toSave);
 
-    T updateByEntity(T toUpdate);
-    T findByEntity(L toFind);
 
-    T update(L id);
+    S deleteByEntity(C toDelete);
 
-    T delete(L id);
-    T findById(L id);
+    S updateByEntity(C toUpdate);
+    S findByEntity(C toFind);
+
+    S update(L id);
+
+    S delete(L id);
+    S findById(L id);
 }

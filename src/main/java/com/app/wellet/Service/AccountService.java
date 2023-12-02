@@ -1,57 +1,61 @@
 package com.app.wellet.Service;
 
 import com.app.wellet.DTO.request.AccountRequestDTO;
+import com.app.wellet.DTO.response.AccountResponseDTO;
 
 import java.util.List;
 
-public class AccountService implements ServiceCrudOperations<AccountRequestDTO, Long> {
+public class AccountService implements ServiceCrudOperations<
+        AccountResponseDTO,AccountRequestDTO, Long
+> {
+
     @Override
-    public List<AccountRequestDTO> findAll() {
+    public List<AccountResponseDTO> findAll() {
         return null;
     }
 
     @Override
-    public List<AccountRequestDTO> saveAll(List<AccountRequestDTO> toSave) {
+    public List<AccountResponseDTO> saveAll(List<AccountRequestDTO> toSave) {
         return null;
     }
 
     @Override
-    public List<AccountRequestDTO> updateAll(List<AccountRequestDTO> toUpdate) {
+    public List<AccountResponseDTO> updateAll(List<AccountRequestDTO> toUpdate) {
         return null;
     }
 
     @Override
-    public AccountRequestDTO saveByEntity(AccountRequestDTO toSave) {
+    public AccountResponseDTO saveByEntity(AccountRequestDTO toSave) {
         return null;
     }
 
     @Override
-    public AccountRequestDTO deleteByEntity(AccountRequestDTO toDelete) {
+    public AccountResponseDTO deleteByEntity(AccountRequestDTO toDelete) {
         return null;
     }
 
     @Override
-    public AccountRequestDTO updateByEntity(AccountRequestDTO toUpdate) {
+    public AccountResponseDTO updateByEntity(AccountRequestDTO toUpdate) {
         return null;
     }
 
     @Override
-    public AccountRequestDTO findByEntity(Long toFind) {
+    public AccountResponseDTO findByEntity(AccountRequestDTO toFind) {
         return null;
     }
 
     @Override
-    public AccountRequestDTO update(Long id) {
+    public AccountResponseDTO update(Long id) {
         return null;
     }
 
     @Override
-    public AccountRequestDTO delete(Long id) {
+    public AccountResponseDTO delete(Long id) {
         return null;
     }
 
     @Override
-    public AccountRequestDTO findById(Long id) {
+    public AccountResponseDTO findById(Long id) {
         return null;
     }
 }

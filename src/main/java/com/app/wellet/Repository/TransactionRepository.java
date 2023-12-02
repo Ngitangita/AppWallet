@@ -1,57 +1,63 @@
 package com.app.wellet.Repository;
 
+import com.app.wellet.DTO.request.AccountRequestDTO;
 import com.app.wellet.DTO.request.TransactionRequestDTO;
+import com.app.wellet.DTO.response.AccountResponseDTO;
+import com.app.wellet.DTO.response.TransactionResponseDTO;
 
 import java.util.List;
 
-public class TransactionRepository implements RepositoryCrudOperations<TransactionRequestDTO, Long>{
+public class TransactionRepository implements RepositoryCrudOperations<
+        TransactionResponseDTO, TransactionRequestDTO, Long
+> {
+
     @Override
-    public List<TransactionRequestDTO> findAll() {
+    public List<TransactionResponseDTO> findAll() {
         return null;
     }
 
     @Override
-    public List<TransactionRequestDTO> saveAll(List<TransactionRequestDTO> toSave) {
+    public List<TransactionResponseDTO> saveAll(List<TransactionRequestDTO> toSave) {
         return null;
     }
 
     @Override
-    public List<TransactionRequestDTO> updateAll(List<TransactionRequestDTO> toUpdate) {
+    public List<TransactionResponseDTO> updateAll(List<TransactionRequestDTO> toUpdate) {
         return null;
     }
 
     @Override
-    public TransactionRequestDTO saveByEntity(TransactionRequestDTO toSave) {
+    public TransactionResponseDTO saveByEntity(TransactionRequestDTO toSave) {
         return null;
     }
 
     @Override
-    public TransactionRequestDTO deleteByEntity(TransactionRequestDTO toDelete) {
+    public TransactionResponseDTO deleteByEntity(TransactionRequestDTO toDelete) {
         return null;
     }
 
     @Override
-    public TransactionRequestDTO updateByEntity(TransactionRequestDTO toUpdate) {
+    public TransactionResponseDTO updateByEntity(TransactionRequestDTO toUpdate) {
         return null;
     }
 
     @Override
-    public TransactionRequestDTO findByEntity(Long toFind) {
+    public TransactionResponseDTO findByEntity(TransactionRequestDTO toFind) {
         return null;
     }
 
     @Override
-    public TransactionRequestDTO update(Long id) {
+    public TransactionResponseDTO update(Long id) {
         return null;
     }
 
     @Override
-    public TransactionRequestDTO delete(Long id) {
+    public TransactionResponseDTO delete(Long id) {
         return null;
     }
 
     @Override
-    public TransactionRequestDTO findById(Long id) {
+    public TransactionResponseDTO findById(Long id) {
         return null;
     }
 }

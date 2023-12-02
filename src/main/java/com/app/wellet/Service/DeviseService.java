@@ -1,42 +1,46 @@
 package com.app.wellet.Service;
 
+import com.app.wellet.DTO.request.DeviseRequestDTO;
 import com.app.wellet.DTO.response.DeviseResponseDTO;
 
 import java.util.List;
 
-public class DeviseService implements ServiceCrudOperations<DeviseResponseDTO, Long> {
+public class DeviseService implements ServiceCrudOperations<
+        DeviseResponseDTO, DeviseRequestDTO, Long
+> {
+
     @Override
     public List<DeviseResponseDTO> findAll() {
         return null;
     }
 
     @Override
-    public List<DeviseResponseDTO> saveAll(List<DeviseResponseDTO> toSave) {
+    public List<DeviseResponseDTO> saveAll(List<DeviseRequestDTO> toSave) {
         return null;
     }
 
     @Override
-    public List<DeviseResponseDTO> updateAll(List<DeviseResponseDTO> toUpdate) {
+    public List<DeviseResponseDTO> updateAll(List<DeviseRequestDTO> toUpdate) {
         return null;
     }
 
     @Override
-    public DeviseResponseDTO saveByEntity(DeviseResponseDTO toSave) {
+    public DeviseResponseDTO saveByEntity(DeviseRequestDTO toSave) {
         return null;
     }
 
     @Override
-    public DeviseResponseDTO deleteByEntity(DeviseResponseDTO toDelete) {
+    public DeviseResponseDTO deleteByEntity(DeviseRequestDTO toDelete) {
         return null;
     }
 
     @Override
-    public DeviseResponseDTO updateByEntity(DeviseResponseDTO toUpdate) {
+    public DeviseResponseDTO updateByEntity(DeviseRequestDTO toUpdate) {
         return null;
     }
 
     @Override
-    public DeviseResponseDTO findByEntity(Long toFind) {
+    public DeviseResponseDTO findByEntity(DeviseRequestDTO toFind) {
         return null;
     }
 

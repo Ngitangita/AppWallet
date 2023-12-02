@@ -2,24 +2,24 @@ package com.app.wellet.Repository;
 
 import java.util.List;
 
-public interface RepositoryCrudOperations<T, L> {
-    List<T> findAll();
+public interface RepositoryCrudOperations<S,C, L> {
+    List<S> findAll();
 
-    List<T> saveAll(List<T> toSave);
+    List<S> saveAll(List<C> toSave);
 
-    List<T> updateAll(List<T> toUpdate);
-
-
-    T saveByEntity(T toSave);
+    List<S> updateAll(List<C> toUpdate);
 
 
-    T deleteByEntity(T toDelete);
+    S saveByEntity(C toSave);
 
-    T updateByEntity(T toUpdate);
-    T findByEntity(L toFind);
 
-    T update(L id);
+    S deleteByEntity(C toDelete);
 
-    T delete(L id);
-    T findById(L id);
+    S updateByEntity(C toUpdate);
+    S findByEntity(C toFind);
+
+    S update(L id);
+
+    S delete(L id);
+    S findById(L id);
 }
