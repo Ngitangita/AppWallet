@@ -1,4 +1,4 @@
-package org.example.Entity;
+package com.app.wellet.Entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
