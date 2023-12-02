@@ -1,4 +1,4 @@
-package com.app.wellet.Config;
+package com.app.wellet.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

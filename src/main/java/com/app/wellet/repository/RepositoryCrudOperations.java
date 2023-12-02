@@ -1,4 +1,4 @@
-package com.app.wellet.Repository;
+package com.app.wellet.repository;
 
 import java.util.List;
 

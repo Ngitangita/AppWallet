@@ -1,4 +1,4 @@
-package com.app.wellet.Entity;
+package com.app.wellet.entity;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.app.wellet.Controller;
+package com.app.wellet.controller;
 
 public class AccountController {
 }

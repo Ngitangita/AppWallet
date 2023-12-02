@@ -1,11 +1,11 @@
-package com.app.wellet.Service;
+package com.app.wellet.repository;
 
 import com.app.wellet.DTO.request.TransactionRequestDTO;
 import com.app.wellet.DTO.response.TransactionResponseDTO;
 
 import java.util.List;
 
-public class TransactionService implements ServiceCrudOperations<
+public class TransactionRepository implements RepositoryCrudOperations<
         TransactionResponseDTO, TransactionRequestDTO, Long
 > {
 

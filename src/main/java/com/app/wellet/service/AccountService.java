@@ -1,13 +1,13 @@
-package com.app.wellet.Repository;
+package com.app.wellet.service;
 
 import com.app.wellet.DTO.request.AccountRequestDTO;
 import com.app.wellet.DTO.response.AccountResponseDTO;
 
 import java.util.List;
 
-public class AccountRepository implements RepositoryCrudOperations<
+public class AccountService implements ServiceCrudOperations<
         AccountResponseDTO,AccountRequestDTO, Long
->  {
+> {
 
     @Override
     public List<AccountResponseDTO> findAll() {

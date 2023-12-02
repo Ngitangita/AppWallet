@@ -1,4 +1,4 @@
-package com.app.wellet.Service;
+package com.app.wellet.service;
 
 import java.util.List;
 

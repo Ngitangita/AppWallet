@@ -1,11 +1,12 @@
-package com.app.wellet.Service;
+package com.app.wellet.repository;
 
 import com.app.wellet.DTO.request.DeviseRequestDTO;
 import com.app.wellet.DTO.response.DeviseResponseDTO;
 
+
 import java.util.List;
 
-public class DeviseService implements ServiceCrudOperations<
+public class DeviseRepository implements RepositoryCrudOperations<
         DeviseResponseDTO, DeviseRequestDTO, Long
 > {
 
