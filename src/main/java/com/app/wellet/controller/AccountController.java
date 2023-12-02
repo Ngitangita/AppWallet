@@ -1,5 +1,6 @@
 package com.app.wellet.controller;
 
+import com.app.wellet.DTO.request.AccountRequestDTO;
 import com.app.wellet.DTO.response.AccountResponseDTO;
 import com.app.wellet.service.AccountService;
 
@@ -14,5 +15,9 @@ public class AccountController {
 
     public List<AccountResponseDTO> getAccounts() {
         return this.accountService.findAll();
+    }
+
+    public List<AccountResponseDTO> saveAll(List<AccountRequestDTO> toSave) {
+        return this.accountService.saveAll(toSave);
     }
 }

@@ -6,6 +6,7 @@ public record AccountResponseDTO(
     Integer id,
     Float sold,
     String accountType,
-    LocalDateTime openDate
+    LocalDateTime openDate,
+    Long accountNumber
 ) {
 }

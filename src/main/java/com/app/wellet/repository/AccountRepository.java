@@ -4,10 +4,7 @@ import com.app.wellet.DTO.request.AccountRequestDTO;
 import com.app.wellet.DTO.response.AccountResponseDTO;
 import com.app.wellet.config.DatabaseConnection;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,33 +13,38 @@ public class AccountRepository implements RepositoryCrudOperations<
         AccountResponseDTO, AccountRequestDTO, Long
 >{
     @Override
-        public List<AccountResponseDTO> findAll() {
-            List<AccountResponseDTO> accountResponseDTOS = new ArrayList<>();
-            Connection con = DatabaseConnection.getConnection();
-            String sql = "SELECT * FROM \"account\"";
-            try (Connection connection = con;
-                 Statement statement = connection.createStatement();
-                 ResultSet resultSet = statement.executeQuery(sql)) {
-                while (resultSet.next()) {
-                    int id = resultSet.getInt("id");
-                    float sold = resultSet.getFloat("sold");
-                    String accountType = resultSet.getString("account_type");
-                    LocalDateTime openDate = resultSet.getObject("open_date", LocalDateTime.class);
-                    AccountResponseDTO account = new AccountResponseDTO(id, sold, accountType, openDate);
-                    accountResponseDTOS.add(account);
-                }
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-
-            return accountResponseDTOS;
+    public List<AccountResponseDTO> findAll() {
+        String sql = "SELECT id, sold, account_type, open_date, account_number FROM \"account\"";
+        try (Connection con = DatabaseConnection.getConnection();
+             Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            return fromAccountList(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+    }
 
     @Override
     public List<AccountResponseDTO> saveAll(List<AccountRequestDTO> toSave) {
-        return null;
+        String sql = "INSERT INTO \"account\" (sold, account_type, open_date, account_number) VALUES (?, ?, ?, ?) RETURNING *";
+        List<AccountResponseDTO> savedAccounts = new ArrayList<>();
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            for (AccountRequestDTO accountRequestDTO : toSave) {
+                setAccountParameters(stmt, accountRequestDTO);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    savedAccounts.add(fromAccountResponse(rs));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return savedAccounts;
     }
+
+
 
     @Override
     public List<AccountResponseDTO> updateAll(List<AccountResponseDTO> toUpdate) {
@@ -72,5 +74,31 @@ public class AccountRepository implements RepositoryCrudOperations<
     @Override
     public AccountResponseDTO delete(Long id) {
         return null;
+    }
+
+
+    private void setAccountParameters(PreparedStatement stmt, AccountRequestDTO accountRequestDTO) throws SQLException {
+        stmt.setFloat(1, accountRequestDTO.sold());
+        stmt.setString(2, accountRequestDTO.accountType());
+        stmt.setObject(3, accountRequestDTO.openDate());
+        stmt.setLong(4, accountRequestDTO.accountNumber());
+    }
+
+    private List<AccountResponseDTO> fromAccountList(ResultSet rs) throws SQLException {
+        List<AccountResponseDTO> accountResponseDTOS = new ArrayList<>();
+        while (rs.next()) {
+            accountResponseDTOS.add(this.fromAccountResponse(rs));
+        }
+        return accountResponseDTOS;
+    }
+
+    private AccountResponseDTO fromAccountResponse(ResultSet rs) throws SQLException {
+        return new AccountResponseDTO(
+                rs.getInt("id"),
+                rs.getFloat("sold"),
+                rs.getString("account_type"),
+                rs.getObject("open_date", LocalDateTime.class),
+                rs.getLong("account_number")
+        );
     }
 }

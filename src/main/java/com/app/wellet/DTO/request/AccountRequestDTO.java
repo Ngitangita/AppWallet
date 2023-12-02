@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public record AccountRequestDTO(
         Float sold,
         String accountType,
-        LocalDateTime openDate
+        LocalDateTime openDate,
+        Long accountNumber
 ) {
 }

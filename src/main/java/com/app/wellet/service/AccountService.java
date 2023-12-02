@@ -22,7 +22,7 @@ public class AccountService implements ServiceCrudOperations<
 
     @Override
     public List<AccountResponseDTO> saveAll(List<AccountRequestDTO> toSave) {
-        return null;
+        return this.accountRepository.saveAll(toSave);
     }
 
     @Override
