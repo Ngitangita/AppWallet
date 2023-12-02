@@ -27,7 +27,7 @@ public class AccountService implements ServiceCrudOperations<
 
     @Override
     public List<AccountResponseDTO> updateAll(List<AccountResponseDTO> toUpdate) {
-        return null;
+        return this.accountRepository.updateAll(toUpdate);
     }
 
     @Override

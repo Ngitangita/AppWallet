@@ -17,8 +17,9 @@ public class AccountRepository implements RepositoryCrudOperations<
         String sql = "SELECT id, sold, account_type, open_date, account_number FROM \"account\"";
         try (Connection con = DatabaseConnection.getConnection();
              Statement stmt = con.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            return fromAccountList(rs);
+             ResultSet rs = stmt.executeQuery(sql)
+        ) {
+            return this.fromAccountList(rs);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -29,12 +30,13 @@ public class AccountRepository implements RepositoryCrudOperations<
         String sql = "INSERT INTO \"account\" (sold, account_type, open_date, account_number) VALUES (?, ?, ?, ?) RETURNING *";
         List<AccountResponseDTO> savedAccounts = new ArrayList<>();
         try (Connection con = DatabaseConnection.getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+             PreparedStatement stmt = con.prepareStatement(sql)
+        ) {
             for (AccountRequestDTO accountRequestDTO : toSave) {
-                setAccountParameters(stmt, accountRequestDTO);
+                this.setAccountParameters(stmt, accountRequestDTO);
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
-                    savedAccounts.add(fromAccountResponse(rs));
+                    savedAccounts.add(this.fromAccountResponse(rs));
                 }
             }
         } catch (SQLException e) {
@@ -48,7 +50,29 @@ public class AccountRepository implements RepositoryCrudOperations<
 
     @Override
     public List<AccountResponseDTO> updateAll(List<AccountResponseDTO> toUpdate) {
-        return null;
+        List<AccountResponseDTO> updatedAccounts = new ArrayList<>();
+
+        String sql = "UPDATE \"account\" SET sold = ?, account_type = ?, open_date = ?, account_number = ? WHERE id = ?";
+
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)
+        ) {
+            for (AccountResponseDTO updatedAccount : toUpdate) {
+                stmt.setFloat(1, updatedAccount.sold());
+                stmt.setString(2, updatedAccount.accountType());
+                stmt.setObject(3, updatedAccount.openDate());
+                stmt.setLong(4, updatedAccount.accountNumber());
+                stmt.setInt(5, updatedAccount.id());
+                int affectedRows = stmt.executeUpdate();
+                if (affectedRows > 0) {
+                    updatedAccounts.add(updatedAccount);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return updatedAccounts;
     }
 
     @Override

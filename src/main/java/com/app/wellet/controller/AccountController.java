@@ -17,7 +17,11 @@ public class AccountController {
         return this.accountService.findAll();
     }
 
-    public List<AccountResponseDTO> saveAll(List<AccountRequestDTO> toSave) {
+    public List<AccountResponseDTO> saveAccounts(List<AccountRequestDTO> toSave) {
         return this.accountService.saveAll(toSave);
+    }
+
+    public List<AccountResponseDTO> updateAccounts(List<AccountResponseDTO> toUpdate) {
+        return this.accountService.updateAll(toUpdate);
     }
 }
