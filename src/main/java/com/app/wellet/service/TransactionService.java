@@ -7,8 +7,7 @@ import java.util.List;
 
 public class TransactionService implements ServiceCrudOperations<
         TransactionResponseDTO, TransactionRequestDTO, Long
-> {
-
+>{
     @Override
     public List<TransactionResponseDTO> findAll() {
         return null;
@@ -20,7 +19,7 @@ public class TransactionService implements ServiceCrudOperations<
     }
 
     @Override
-    public List<TransactionResponseDTO> updateAll(List<TransactionRequestDTO> toUpdate) {
+    public List<TransactionResponseDTO> updateAll(List<TransactionResponseDTO> toUpdate) {
         return null;
     }
 
@@ -30,32 +29,22 @@ public class TransactionService implements ServiceCrudOperations<
     }
 
     @Override
-    public TransactionResponseDTO deleteByEntity(TransactionRequestDTO toDelete) {
+    public TransactionResponseDTO deleteByEntity(TransactionResponseDTO toDelete) {
         return null;
     }
 
     @Override
-    public TransactionResponseDTO updateByEntity(TransactionRequestDTO toUpdate) {
-        return null;
-    }
-
-    @Override
-    public TransactionResponseDTO findByEntity(TransactionRequestDTO toFind) {
-        return null;
-    }
-
-    @Override
-    public TransactionResponseDTO update(Long id) {
-        return null;
-    }
-
-    @Override
-    public TransactionResponseDTO delete(Long id) {
+    public TransactionResponseDTO findByEntity(TransactionResponseDTO toFind) {
         return null;
     }
 
     @Override
     public TransactionResponseDTO findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public TransactionResponseDTO delete(Long id) {
         return null;
     }
 }

@@ -7,8 +7,7 @@ import java.util.List;
 
 public class DeviseService implements ServiceCrudOperations<
         DeviseResponseDTO, DeviseRequestDTO, Long
-> {
-
+>{
     @Override
     public List<DeviseResponseDTO> findAll() {
         return null;
@@ -20,7 +19,7 @@ public class DeviseService implements ServiceCrudOperations<
     }
 
     @Override
-    public List<DeviseResponseDTO> updateAll(List<DeviseRequestDTO> toUpdate) {
+    public List<DeviseResponseDTO> updateAll(List<DeviseResponseDTO> toUpdate) {
         return null;
     }
 
@@ -30,32 +29,22 @@ public class DeviseService implements ServiceCrudOperations<
     }
 
     @Override
-    public DeviseResponseDTO deleteByEntity(DeviseRequestDTO toDelete) {
+    public DeviseResponseDTO deleteByEntity(DeviseResponseDTO toDelete) {
         return null;
     }
 
     @Override
-    public DeviseResponseDTO updateByEntity(DeviseRequestDTO toUpdate) {
-        return null;
-    }
-
-    @Override
-    public DeviseResponseDTO findByEntity(DeviseRequestDTO toFind) {
-        return null;
-    }
-
-    @Override
-    public DeviseResponseDTO update(Long id) {
-        return null;
-    }
-
-    @Override
-    public DeviseResponseDTO delete(Long id) {
+    public DeviseResponseDTO findByEntity(DeviseResponseDTO toFind) {
         return null;
     }
 
     @Override
     public DeviseResponseDTO findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public DeviseResponseDTO delete(Long id) {
         return null;
     }
 }

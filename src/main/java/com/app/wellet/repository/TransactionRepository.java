@@ -5,10 +5,9 @@ import com.app.wellet.DTO.response.TransactionResponseDTO;
 
 import java.util.List;
 
-public class TransactionRepository implements RepositoryCrudOperations<
+public class TransactionRepository  implements RepositoryCrudOperations<
         TransactionResponseDTO, TransactionRequestDTO, Long
-> {
-
+>{
     @Override
     public List<TransactionResponseDTO> findAll() {
         return null;
@@ -20,7 +19,7 @@ public class TransactionRepository implements RepositoryCrudOperations<
     }
 
     @Override
-    public List<TransactionResponseDTO> updateAll(List<TransactionRequestDTO> toUpdate) {
+    public List<TransactionResponseDTO> updateAll(List<TransactionResponseDTO> toUpdate) {
         return null;
     }
 
@@ -35,27 +34,17 @@ public class TransactionRepository implements RepositoryCrudOperations<
     }
 
     @Override
-    public TransactionResponseDTO updateByEntity(TransactionRequestDTO toUpdate) {
-        return null;
-    }
-
-    @Override
     public TransactionResponseDTO findByEntity(TransactionRequestDTO toFind) {
         return null;
     }
 
     @Override
-    public TransactionResponseDTO update(Long id) {
+    public TransactionResponseDTO findById(Long id) {
         return null;
     }
 
     @Override
     public TransactionResponseDTO delete(Long id) {
-        return null;
-    }
-
-    @Override
-    public TransactionResponseDTO findById(Long id) {
         return null;
     }
 }

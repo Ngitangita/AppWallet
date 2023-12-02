@@ -6,9 +6,8 @@ import com.app.wellet.DTO.response.AccountResponseDTO;
 import java.util.List;
 
 public class AccountRepository implements RepositoryCrudOperations<
-        AccountResponseDTO,AccountRequestDTO, Long
->  {
-
+        AccountResponseDTO, AccountRequestDTO, Long
+>{
     @Override
     public List<AccountResponseDTO> findAll() {
         return null;
@@ -20,7 +19,7 @@ public class AccountRepository implements RepositoryCrudOperations<
     }
 
     @Override
-    public List<AccountResponseDTO> updateAll(List<AccountRequestDTO> toUpdate) {
+    public List<AccountResponseDTO> updateAll(List<AccountResponseDTO> toUpdate) {
         return null;
     }
 
@@ -35,27 +34,17 @@ public class AccountRepository implements RepositoryCrudOperations<
     }
 
     @Override
-    public AccountResponseDTO updateByEntity(AccountRequestDTO toUpdate) {
-        return null;
-    }
-
-    @Override
     public AccountResponseDTO findByEntity(AccountRequestDTO toFind) {
         return null;
     }
 
     @Override
-    public AccountResponseDTO update(Long id) {
+    public AccountResponseDTO findById(Long id) {
         return null;
     }
 
     @Override
     public AccountResponseDTO delete(Long id) {
-        return null;
-    }
-
-    @Override
-    public AccountResponseDTO findById(Long id) {
         return null;
     }
 }
