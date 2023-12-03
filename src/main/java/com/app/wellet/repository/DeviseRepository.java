@@ -105,10 +105,6 @@ public class DeviseRepository implements RepositoryCrudOperations<DeviseResponse
         }
     }
 
-    @Override
-    public DeviseResponseDTO findByEntity(DeviseResponseDTO toFind) {
-        return null;
-    }
 
     @Override
     public DeviseResponseDTO findById(Long id) {

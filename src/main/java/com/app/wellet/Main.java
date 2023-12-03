@@ -21,8 +21,6 @@ public class Main {
         //System.out.println(accountController.getAccounts());
 
         // saveAll
-
-
            List<AccountRequestDTO> accountsToSave = List.of(
                    new AccountRequestDTO(1.2f, "savings", LocalDateTime.now(), 112L),
                    new AccountRequestDTO(1.0f, "Savings", LocalDateTime.now(), 213L)
