@@ -32,7 +32,7 @@ public class AccountService implements ServiceCrudOperations<
 
     @Override
     public AccountResponseDTO saveByEntity(AccountRequestDTO toSave) {
-        return null;
+        return this.accountRepository.saveByEntity(toSave);
     }
 
     @Override

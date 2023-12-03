@@ -24,4 +24,8 @@ public class AccountController {
     public List<AccountResponseDTO> updateAccounts(List<AccountResponseDTO> toUpdate) {
         return this.accountService.updateAll(toUpdate);
     }
+
+    public AccountResponseDTO save(AccountRequestDTO toSave) {
+        return this.accountService.saveByEntity(toSave);
+    }
 }

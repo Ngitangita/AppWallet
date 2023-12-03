@@ -29,12 +29,12 @@ public class DeviseRepository implements RepositoryCrudOperations<
     }
 
     @Override
-    public DeviseResponseDTO deleteByEntity(DeviseRequestDTO toDelete) {
+    public DeviseResponseDTO deleteByEntity(DeviseResponseDTO toDelete) {
         return null;
     }
 
     @Override
-    public DeviseResponseDTO findByEntity(DeviseRequestDTO toFind) {
+    public DeviseResponseDTO findByEntity(DeviseResponseDTO toFind) {
         return null;
     }
 

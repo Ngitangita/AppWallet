@@ -29,14 +29,15 @@ public class TransactionRepository  implements RepositoryCrudOperations<
     }
 
     @Override
-    public TransactionResponseDTO deleteByEntity(TransactionRequestDTO toDelete) {
+    public TransactionResponseDTO deleteByEntity(TransactionResponseDTO toDelete) {
         return null;
     }
 
     @Override
-    public TransactionResponseDTO findByEntity(TransactionRequestDTO toFind) {
+    public TransactionResponseDTO findByEntity(TransactionResponseDTO toFind) {
         return null;
     }
+
 
     @Override
     public TransactionResponseDTO findById(Long id) {
