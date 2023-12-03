@@ -9,7 +9,7 @@ public class DatabaseConnection {
         try {
             return DriverManager.getConnection(
                     System.getenv("URL"),
-                    System.getenv("USERNAME"),
+                    System.getenv("USERS"),
                     System.getenv("PASSWORD")
             );
         } catch (SQLException e) {
