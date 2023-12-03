@@ -28,4 +28,8 @@ public class AccountController {
     public AccountResponseDTO save(AccountRequestDTO toSave) {
         return this.accountService.saveByEntity(toSave);
     }
+
+    public AccountResponseDTO delete(AccountResponseDTO toDelete) {
+        return this.accountService.deleteByEntity ( toDelete );
+    }
 }

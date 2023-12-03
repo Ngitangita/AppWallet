@@ -25,9 +25,11 @@ public class Main {
                    new AccountRequestDTO(1.2f, "savings", LocalDateTime.now(), 112L),
                    new AccountRequestDTO(1.0f, "Savings", LocalDateTime.now(), 213L)
            );
-           System.out.println(accountController.saveAccounts(accountsToSave));
+           //System.out.println(accountController.saveAccounts(accountsToSave));
 
-
+        System.out.println (accountController.delete ( new AccountResponseDTO(2,200.0f, "Savings",
+                LocalDateTime.parse("2023-12-03T14:37:09"),
+                230013L) ) );
         // updateAccounts
 
           /* List<AccountResponseDTO> accountsToSave = List.of(
@@ -38,4 +40,5 @@ public class Main {
         // save
         //System.out.println(accountController.save(new AccountRequestDTO(1455.0f, "Checking", LocalDateTime.parse("2023-12-01T11:30:45"), 3904L)));
     }
+
 }

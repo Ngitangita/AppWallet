@@ -37,16 +37,16 @@ public class AccountService implements ServiceCrudOperations<
 
     @Override
     public AccountResponseDTO deleteByEntity(AccountResponseDTO toDelete) {
-        return null;
+        return this.accountRepository.deleteByEntity ( toDelete );
     }
 
     @Override
     public AccountResponseDTO findById(Long id) {
-        return null;
+        return this.accountRepository.findById ( id );
     }
 
     @Override
     public AccountResponseDTO delete(Long id) {
-        return null;
+        return this.accountRepository.delete ( id );
     }
 }
