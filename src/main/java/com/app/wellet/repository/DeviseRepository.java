@@ -76,11 +76,11 @@ public class DeviseRepository implements RepositoryCrudOperations<DeviseResponse
                     if (generatedKeys.next ()){
                         return fromDeviseResponse ( generatedKeys );
                     }else {
-                        throw new SQLException ( "Creating account failed, no ID obtained." );
+                        throw new SQLException ( "Creating devise failed, no ID obtained." );
                     }
                 }
             }else {
-                throw new SQLException ( "Creating account failed, no rows affected." );
+                throw new SQLException ( "Creating devise failed, no rows affected." );
             }
         } catch ( SQLException e ) {
             throw new RuntimeException ( e );
@@ -98,7 +98,7 @@ public class DeviseRepository implements RepositoryCrudOperations<DeviseResponse
             if (rows > 0){
                 return toDelete;
             }else {
-                throw new SQLException ( "Removing account failed, no rows affected." );
+                throw new SQLException ( "Removing devise failed, no rows affected." );
             }
         } catch ( SQLException e ) {
             throw new RuntimeException ( e );
@@ -108,12 +108,39 @@ public class DeviseRepository implements RepositoryCrudOperations<DeviseResponse
 
     @Override
     public DeviseResponseDTO findById(Long id) {
-        return null;
+        try (Connection connection = DatabaseConnection.getConnection ();
+            PreparedStatement stmt = connection.prepareStatement (
+                    "SELECT * FROM \"devise\" WHERE id IN (?)"
+            )){
+                stmt.setLong ( 1, id );
+                ResultSet resultSet = stmt.executeQuery ( );
+                if (resultSet.next ()){
+                    return this.fromDeviseResponse ( resultSet );
+                }else {
+                    throw new SQLException ( "looking for devise failed, no rows affected." );
+                }
+        } catch ( SQLException e ) {
+            throw new RuntimeException ( e );
+        }
     }
 
     @Override
     public DeviseResponseDTO delete(Long id) {
-        return null;
+        DeviseResponseDTO deletedDevise = this.findById ( id );
+        String deleted = "DELETE FROM \"devise\" WHERE id = ?";
+        try (Connection connection = DatabaseConnection.getConnection ();
+            PreparedStatement stmt = connection.prepareStatement ( deleted )
+        ){
+            stmt.setLong ( 1, id );
+            int rows = stmt.executeUpdate ();
+            if (rows > 0){
+                return deletedDevise;
+            }else {
+                throw new SQLException ( "Removing devise failed, no rows affected." );
+            }
+        } catch ( SQLException e ) {
+            throw new RuntimeException ( e );
+        }
     }
 
     private void SetDeviseParameters(PreparedStatement stmt, DeviseRequestDTO deviseRequestDTO) throws SQLException{
@@ -132,8 +159,8 @@ public class DeviseRepository implements RepositoryCrudOperations<DeviseResponse
     private DeviseResponseDTO fromDeviseResponse(ResultSet rs) throws SQLException{
         return new DeviseResponseDTO (
                 rs.getInt ( "id"),
-                rs.getFloat ( "rateChange" ),
-                rs.getString ( "deviseSymbol" )
+                rs.getFloat ( "rate_change" ),
+                rs.getString ( "devise_symbol" )
         );
     }
 }
