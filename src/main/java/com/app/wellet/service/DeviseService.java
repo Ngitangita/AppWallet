@@ -34,11 +34,6 @@ public class DeviseService implements ServiceCrudOperations<
     }
 
     @Override
-    public DeviseResponseDTO findByEntity(DeviseResponseDTO toFind) {
-        return null;
-    }
-
-    @Override
     public DeviseResponseDTO findById(Long id) {
         return null;
     }

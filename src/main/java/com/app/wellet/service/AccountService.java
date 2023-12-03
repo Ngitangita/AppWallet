@@ -41,11 +41,6 @@ public class AccountService implements ServiceCrudOperations<
     }
 
     @Override
-    public AccountResponseDTO findByEntity(AccountResponseDTO toFind) {
-        return null;
-    }
-
-    @Override
     public AccountResponseDTO findById(Long id) {
         return null;
     }

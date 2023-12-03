@@ -14,8 +14,6 @@ public interface ServiceCrudOperations<S, C, L>{
 
     S deleteByEntity(S toDelete);
 
-    S findByEntity(S toFind);
-
     S findById(L id);
 
     S delete(L id);

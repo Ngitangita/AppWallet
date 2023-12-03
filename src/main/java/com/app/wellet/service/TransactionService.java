@@ -35,11 +35,6 @@ public class TransactionService implements ServiceCrudOperations<
     }
 
     @Override
-    public TransactionResponseDTO findByEntity(TransactionResponseDTO toFind) {
-        return null;
-    }
-
-    @Override
     public TransactionResponseDTO findById(Long id) {
         return null;
     }
