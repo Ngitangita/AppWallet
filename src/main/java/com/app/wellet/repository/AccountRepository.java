@@ -101,10 +101,22 @@ public class AccountRepository implements RepositoryCrudOperations<
     }
     @Override
     public AccountResponseDTO deleteByEntity(AccountResponseDTO toDelete) {
-        String deleted = "DELETE FROM \"account\" FROM id IN (?)";
-
-        return null;
+        String deleted = "DELETE FROM \"account\" WHERE id = ?";
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement stmt = con.prepareStatement(deleted)
+        ) {
+            stmt.setInt(1, toDelete.id());
+            int rows = stmt.executeUpdate();
+            if (rows > 0) {
+                return toDelete;
+            } else {
+                throw new SQLException("Removing account failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     @Override
     public AccountResponseDTO findByEntity(AccountResponseDTO toFind) {
