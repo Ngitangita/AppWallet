@@ -33,10 +33,6 @@ public class TransactionRepository  implements RepositoryCrudOperations<
         return null;
     }
 
-    @Override
-    public TransactionResponseDTO findByEntity(TransactionResponseDTO toFind) {
-        return null;
-    }
 
 
     @Override

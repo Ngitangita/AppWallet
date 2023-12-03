@@ -2,7 +2,6 @@ package com.app.wellet.repository;
 
 import com.app.wellet.DTO.request.AccountRequestDTO;
 import com.app.wellet.DTO.response.AccountResponseDTO;
-import com.app.wellet.DTO.response.DeviseResponseDTO;
 import com.app.wellet.config.DatabaseConnection;
 
 import java.sql.*;
@@ -117,11 +116,6 @@ public class AccountRepository implements RepositoryCrudOperations<
         }
     }
 
-
-    @Override
-    public AccountResponseDTO findByEntity(AccountResponseDTO toFind) {
-        return null;
-    }
 
     @Override
     public AccountResponseDTO findById(Long id) {
