@@ -2,6 +2,7 @@ package com.app.wellet.repository;
 
 import com.app.wellet.DTO.request.AccountRequestDTO;
 import com.app.wellet.DTO.response.AccountResponseDTO;
+import com.app.wellet.DTO.response.DeviseResponseDTO;
 import com.app.wellet.config.DatabaseConnection;
 
 import java.sql.*;
@@ -77,16 +78,36 @@ public class AccountRepository implements RepositoryCrudOperations<
 
     @Override
     public AccountResponseDTO saveByEntity(AccountRequestDTO toSave) {
+        String sql = "INSERT INTO \"account\" (sold, account_type, open_date, account_number) VALUES (?, ?, ?, ?)";
+        try(Connection con = DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
+        ) {
+            this.setAccountParameters(stmt, toSave);
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return fromAccountResponse(generatedKeys);
+                    } else {
+                        throw new SQLException("Creating account failed, no ID obtained.");
+                    }
+                }
+            } else {
+                throw new SQLException("Creating account failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public AccountResponseDTO deleteByEntity(AccountResponseDTO toDelete) {
+        String deleted = "DELETE FROM \"account\" FROM id IN (?)";
+
         return null;
     }
 
     @Override
-    public AccountResponseDTO deleteByEntity(AccountRequestDTO toDelete) {
-        return null;
-    }
-
-    @Override
-    public AccountResponseDTO findByEntity(AccountRequestDTO toFind) {
+    public AccountResponseDTO findByEntity(AccountResponseDTO toFind) {
         return null;
     }
 

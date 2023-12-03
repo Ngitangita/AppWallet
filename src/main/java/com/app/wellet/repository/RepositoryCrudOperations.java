@@ -11,9 +11,9 @@ public interface RepositoryCrudOperations<S, C, L> {
 
     S saveByEntity(C toSave);
 
-    S deleteByEntity(C toDelete);
+    S deleteByEntity(S toDelete);
 
-    S findByEntity(C toFind);
+    S findByEntity(S toFind);
 
     S findById(L id);
 
