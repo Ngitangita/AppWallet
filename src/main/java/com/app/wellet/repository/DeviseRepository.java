@@ -65,12 +65,44 @@ public class DeviseRepository implements RepositoryCrudOperations<DeviseResponse
 
     @Override
     public DeviseResponseDTO saveByEntity(DeviseRequestDTO toSave) {
-        return null;
+        String sql = "INSERT INTO \"devise\"(rateChange, deviseSymbol) VALUES (?, ?)";
+        try (Connection connection = DatabaseConnection.getConnection ();
+            PreparedStatement stmt = connection.prepareStatement ( sql, Statement.RETURN_GENERATED_KEYS)
+        ){
+            this.SetDeviseParameters ( stmt, toSave );
+            int affectedRows = stmt.executeUpdate ();
+            if (affectedRows > 0){
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys ( )){
+                    if (generatedKeys.next ()){
+                        return fromDeviseResponse ( generatedKeys );
+                    }else {
+                        throw new SQLException ( "Creating account failed, no ID obtained." );
+                    }
+                }
+            }else {
+                throw new SQLException ( "Creating account failed, no rows affected." );
+            }
+        } catch ( SQLException e ) {
+            throw new RuntimeException ( e );
+        }
     }
 
     @Override
     public DeviseResponseDTO deleteByEntity(DeviseResponseDTO toDelete) {
-        return null;
+        String deleted = "DELETE FROM \"devise\" WHERE id = ?";
+        try (Connection connection = DatabaseConnection.getConnection ();
+            PreparedStatement stmt = connection.prepareStatement ( deleted )
+        ){
+            stmt.setInt ( 1, toDelete.id () );
+            int rows = stmt.executeUpdate ( );
+            if (rows > 0){
+                return toDelete;
+            }else {
+                throw new SQLException ( "Removing account failed, no rows affected." );
+            }
+        } catch ( SQLException e ) {
+            throw new RuntimeException ( e );
+        }
     }
 
     @Override
