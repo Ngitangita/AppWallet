@@ -149,7 +149,7 @@ public class DeviseRepository implements RepositoryCrudOperations<DeviseResponse
     }
 
     private List<DeviseResponseDTO> fromDeviseList(ResultSet rs) throws SQLException{
-        List<DeviseResponseDTO> deviseResponseDTOS =new ArrayList<> ();
+        List<DeviseResponseDTO> deviseResponseDTOS = new ArrayList<> ();
         while (rs.next ()){
             deviseResponseDTOS.add ( this.fromDeviseResponse ( rs ) );
         }
