@@ -7,6 +7,4 @@ public class TransactionController {
     public TransactionController(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
-
-
 }

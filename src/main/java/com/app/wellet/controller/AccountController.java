@@ -25,11 +25,19 @@ public class AccountController {
         return this.accountService.updateAll(toUpdate);
     }
 
-    public AccountResponseDTO save(AccountRequestDTO toSave) {
+    public AccountResponseDTO saveAccount(AccountRequestDTO toSave) {
         return this.accountService.saveByEntity(toSave);
     }
 
-    public AccountResponseDTO delete(AccountResponseDTO toDelete) {
+    public AccountResponseDTO deleteAccount(AccountResponseDTO toDelete) {
         return this.accountService.deleteByEntity ( toDelete );
+    }
+
+    public AccountResponseDTO getAccount(Long id) {
+        return this.accountService.findById(id);
+    }
+
+    public AccountResponseDTO deleteAccount(Long id) {
+        return this.accountService.delete(id);
     }
 }
