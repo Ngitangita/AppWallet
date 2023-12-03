@@ -13,7 +13,6 @@ public interface RepositoryCrudOperations<S, C, L> {
 
     S deleteByEntity(S toDelete);
 
-
     S findById(L id);
 
     S delete(L id);

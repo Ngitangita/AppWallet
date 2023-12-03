@@ -119,12 +119,39 @@ public class AccountRepository implements RepositoryCrudOperations<
 
     @Override
     public AccountResponseDTO findById(Long id) {
-        return null;
+        try (Connection con = DatabaseConnection.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "SELECT * FROM \"account\" WHERE id IN (?)"
+        )){
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return this.fromAccountResponse(rs);
+            } else {
+                throw new SQLException("looking for account failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public AccountResponseDTO delete(Long id) {
-        return null;
+        AccountResponseDTO deletedAccount = this.findById(id);
+        String deleted = "DELETE FROM \"account\" WHERE id = ?";
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement stmt = con.prepareStatement(deleted)
+        ) {
+            stmt.setLong(1, id);
+            int rows = stmt.executeUpdate();
+            if (rows > 0) {
+                return deletedAccount;
+            } else {
+                throw new SQLException("Removing account failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
