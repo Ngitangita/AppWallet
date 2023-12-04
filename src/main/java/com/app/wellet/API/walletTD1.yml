@@ -1,0 +1,192 @@
+openapi: 3.0.3
+info:
+  title: Library API
+  version: 1.0.0
+  description: Wallet_TD1_STD22047_STDSS036
+servers:
+  - url: https://library.com
+tags:
+  - name: Account
+  - name: Devise
+  - name: Transaction
+paths:
+  /account:
+    post:
+      tags:
+        - Account
+      summary: Create accounts
+      description: This can only be done by the logged in accounts.
+      operationId: createAccount
+      requestBody:
+        description: Created accounts object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
+    get:
+      tags:
+        - Account
+      summary: Get all accounts 
+      description:  Retrieve a list of all accounts in the wallet application, optionally filtered by accountName.
+      operationId: getAccountId
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'  # Correction: Added comment
+        '400':
+          $ref: '#/components/responses/Response400'  # Correction: Added comment
+        '403':
+          $ref: '#/components/responses/Response403'  # Correction: Added comment
+        '500':
+          $ref: '#/components/responses/Response500'  # Correction: Added comment
+    
+    put:
+      tags:
+        - Account
+      summary: Update students
+      description: This can only be done by the logged in accounts.
+      operationId: updateAccount
+      parameters:
+        - name: accountName
+          in: path
+          description: name that need to be deleted
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent accounts in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
+    
+    delete:
+      tags:
+        - Account
+      summary: delete accounts
+      description: delete accounts by ID 
+      operationId: deleteAccount
+      parameters:
+        - name: accountName.
+          in: query
+          description: The name that needs to be delete
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
+
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+        sold:
+          type: number
+        accountType:
+          type: string
+        openDate:
+          type: string
+          format: "date-time"
+
+
+    Status:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: Status code of the response
+        message:
+          type: string
+          description: Message associated with the status code
+
+    Body:
+      type: object
+      properties:
+        property:
+          type: string
+          description: Value of the property in the response body
+
+    Responses:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          $ref: '#/components/schemas/Body'
+
+  responses:
+    Response200:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Responses'
+              - $ref: '#/components/responses/Response200'
+
+    Response400:
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Responses'
+                - $ref: '#/components/responses/Response400' 
+
+    Response403:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Responses'
+              - $ref: '#/components/responses/Response403'
+    
+    Response500:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Responses'
+              - $ref: '#/components/responses/Response500'
