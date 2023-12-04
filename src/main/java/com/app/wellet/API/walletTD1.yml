@@ -213,6 +213,108 @@ paths:
           $ref: '#/components/responses/Response403'
         '500':
           $ref: '#/components/responses/Response500'
+  
+  /transaction:
+    post: 
+      tags:
+        - Transaction
+      summary: Create transaction
+      description: This can only be done by the logged in transaction.
+      operationId: createTransaction
+      requestBody:
+        description: Created transaction object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
+    get:
+      tags:
+        - Transaction
+      summary: Get all transaction
+      description:  Retrieve a list of all transaction in the wallet application, optionally filtered by transaction.
+      operationId: getTransactionID
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'  
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403' 
+        '500':
+          $ref: '#/components/responses/Response500' 
+    
+    put:
+      tags:
+        - Transaction
+      summary: Update transaction
+      description: This can only be done by the logged in transaction.
+      operationId: updateTransaction
+      parameters:
+        - name: transaction
+          in: path
+          description: name that need to be deleted
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent transaction in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
+    
+    delete:
+      tags:
+        - Transaction
+      summary: delete transaction
+      description: delete transaction by ID 
+      operationId: deleteTransaction
+      parameters:
+        - name: transaction
+          in: query
+          description: The name that needs to be delete
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
 
 components:
   schemas:
@@ -238,6 +340,19 @@ components:
           type: number
         deviseSymbol:
           type: string
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: integer
+        amount:
+          type: number
+        type:
+          type: string
+        transactionDate:
+          type: string
+          format: "date-time"
 
     Status:
       type: object
