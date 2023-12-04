@@ -15,7 +15,7 @@ paths:
       tags:
         - Account
       summary: Create accounts
-      description: This can only be done by the logged in accounts.
+      description: This can only be done by the logged-in accounts.
       operationId: createAccount
       requestBody:
         description: Created accounts object
@@ -33,7 +33,7 @@ paths:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
@@ -41,34 +41,33 @@ paths:
     get:
       tags:
         - Account
-      summary: Get all accounts 
-      description:  Retrieve a list of all accounts in the wallet application, optionally filtered by accountName.
+      summary: Get all accounts
+      description: Retrieve a list of all accounts in the wallet application, optionally filtered by accountName.
       operationId: getAccountId
       responses:
         '200':
-          $ref: '#/components/responses/Response200' 
+          $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
-          $ref: '#/components/responses/Response403'  
+          $ref: '#/components/responses/Response403'
         '500':
           $ref: '#/components/responses/Response500'
-    
     put:
       tags:
         - Account
       summary: Update accounts
-      description: This can only be done by the logged in accounts.
+      description: This can only be done by the logged-in accounts.
       operationId: updateAccount
       parameters:
         - name: accountName
           in: path
-          description: name that need to be deleted
+          description: Name that needs to be deleted
           required: true
           schema:
             type: string
       requestBody:
-        description: Update an existent accounts in the store
+        description: Update an existent account in the store
         content:
           application/json:
             schema:
@@ -83,41 +82,40 @@ paths:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
           $ref: '#/components/responses/Response500'
-    
     delete:
       tags:
         - Account
-      summary: delete accounts
-      description: delete accounts by ID 
+      summary: Delete accounts
+      description: Delete accounts by ID
       operationId: deleteAccount
       parameters:
-        - name: accountName.
+        - name: accountName
           in: query
-          description: The name that needs to be delete
+          description: The name that needs to be deleted
           required: true
-          schema: 
+          schema:
             type: string
       responses:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
           $ref: '#/components/responses/Response500'
 
   /devise:
-    post: 
+    post:
       tags:
-        - Devise 
-      summary: Create devises 
-      description: This can only be done by the logged in devise.
+        - Devise
+      summary: Create devises
+      description: This can only be done by the logged-in devise.
       operationId: createDevise
       requestBody:
         description: Created devise object
@@ -135,7 +133,7 @@ paths:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
@@ -143,29 +141,28 @@ paths:
     get:
       tags:
         - Devise
-      summary: Get all devises 
-      description:  Retrieve a list of all devise in the wallet application, optionally filtered by devise.
+      summary: Get all devises
+      description: Retrieve a list of all devises in the wallet application, optionally filtered by devise.
       operationId: getDeviseId
       responses:
         '200':
-          $ref: '#/components/responses/Response200'  
+          $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
-          $ref: '#/components/responses/Response403' 
+          $ref: '#/components/responses/Response403'
         '500':
-          $ref: '#/components/responses/Response500' 
-    
+          $ref: '#/components/responses/Response500'
     put:
       tags:
         - Devise
       summary: Update devises
-      description: This can only be done by the logged in devise.
+      description: This can only be done by the logged-in devise.
       operationId: updateDevise
       parameters:
         - name: devise
           in: path
-          description: name that need to be deleted
+          description: Name that needs to be deleted
           required: true
           schema:
             type: string
@@ -185,41 +182,40 @@ paths:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
           $ref: '#/components/responses/Response500'
-    
     delete:
       tags:
         - Devise
-      summary: delete devises
-      description: delete devise by ID 
+      summary: Delete devises
+      description: Delete devise by ID
       operationId: deleteDevise
       parameters:
         - name: devise
           in: query
-          description: The name that needs to be delete
+          description: The name that needs to be deleted
           required: true
-          schema: 
+          schema:
             type: string
       responses:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
           $ref: '#/components/responses/Response500'
-  
+
   /transaction:
-    post: 
+    post:
       tags:
         - Transaction
       summary: Create transaction
-      description: This can only be done by the logged in transaction.
+      description: This can only be done by the logged-in transaction.
       operationId: createTransaction
       requestBody:
         description: Created transaction object
@@ -237,7 +233,7 @@ paths:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
@@ -246,28 +242,27 @@ paths:
       tags:
         - Transaction
       summary: Get all transaction
-      description:  Retrieve a list of all transaction in the wallet application, optionally filtered by transaction.
+      description: Retrieve a list of all transaction in the wallet application, optionally filtered by transaction.
       operationId: getTransactionID
       responses:
         '200':
-          $ref: '#/components/responses/Response200'  
+          $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
-          $ref: '#/components/responses/Response403' 
+          $ref: '#/components/responses/Response403'
         '500':
-          $ref: '#/components/responses/Response500' 
-    
+          $ref: '#/components/responses/Response500'
     put:
       tags:
         - Transaction
       summary: Update transaction
-      description: This can only be done by the logged in transaction.
+      description: This can only be done by the logged-in transaction.
       operationId: updateTransaction
       parameters:
         - name: transaction
           in: path
-          description: name that need to be deleted
+          description: Name that needs to be deleted
           required: true
           schema:
             type: string
@@ -287,30 +282,29 @@ paths:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
           $ref: '#/components/responses/Response500'
-    
     delete:
       tags:
         - Transaction
-      summary: delete transaction
-      description: delete transaction by ID 
+      summary: Delete transaction
+      description: Delete transaction by ID
       operationId: deleteTransaction
       parameters:
         - name: transaction
           in: query
-          description: The name that needs to be delete
+          description: The name that needs to be deleted
           required: true
-          schema: 
+          schema:
             type: string
       responses:
         '200':
           $ref: '#/components/responses/Response200'
         '400':
-          $ref: '#/components/responses/Response400' 
+          $ref: '#/components/responses/Response400'
         '403':
           $ref: '#/components/responses/Response403'
         '500':
@@ -331,10 +325,10 @@ components:
           type: string
           format: "date-time"
 
-    Devise: 
+    Devise:
       type: object
       properties:
-        id: 
+        id:
           type: integer
         rateChange:
           type: number
@@ -371,14 +365,6 @@ components:
           type: string
           description: Value of the property in the response body
 
-    Responses:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        body:
-          $ref: '#/components/schemas/Body'
-
   responses:
     Response200:
       description: Successful operation
@@ -386,17 +372,17 @@ components:
         application/json:
           schema:
             allOf:
-              - $ref: '#/components/schemas/Responses'
-              - $ref: '#/components/responses/Response200'
+              - $ref: '#/components/schemas/Status'
+              - $ref: '#/components/schemas/Body'
 
     Response400:
-        description: Bad Request
-        content:
-          application/json:
-            schema:
-              allOf:
-                - $ref: '#/components/schemas/Responses'
-                - $ref: '#/components/responses/Response400' 
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Status'
+              - $ref: '#/components/schemas/Body'
 
     Response403:
       description: Forbidden
@@ -404,14 +390,14 @@ components:
         application/json:
           schema:
             allOf:
-              - $ref: '#/components/schemas/Responses'
-              - $ref: '#/components/responses/Response403'
-    
+              - $ref: '#/components/schemas/Status'
+              - $ref: '#/components/schemas/Body'
+
     Response500:
       description: Internal Server Error
       content:
         application/json:
           schema:
             allOf:
-              - $ref: '#/components/schemas/Responses'
-              - $ref: '#/components/responses/Response500'
+              - $ref: '#/components/schemas/Status'
+              - $ref: '#/components/schemas/Body'
