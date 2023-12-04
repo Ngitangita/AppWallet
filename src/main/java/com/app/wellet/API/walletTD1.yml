@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Library API
   version: 1.0.0
-  description: Wallet_TD1_STD22047_STDSS036
+  description: Wallet_TD1_STD22047_STD22036
 servers:
   - url: https://library.com
 tags:
@@ -46,18 +46,18 @@ paths:
       operationId: getAccountId
       responses:
         '200':
-          $ref: '#/components/responses/Response200'  # Correction: Added comment
+          $ref: '#/components/responses/Response200' 
         '400':
-          $ref: '#/components/responses/Response400'  # Correction: Added comment
+          $ref: '#/components/responses/Response400' 
         '403':
-          $ref: '#/components/responses/Response403'  # Correction: Added comment
+          $ref: '#/components/responses/Response403'  
         '500':
-          $ref: '#/components/responses/Response500'  # Correction: Added comment
+          $ref: '#/components/responses/Response500'
     
     put:
       tags:
         - Account
-      summary: Update students
+      summary: Update accounts
       description: This can only be done by the logged in accounts.
       operationId: updateAccount
       parameters:
@@ -112,6 +112,107 @@ paths:
         '500':
           $ref: '#/components/responses/Response500'
 
+  /devise:
+    post: 
+      tags:
+        - Devise 
+      summary: Create devises 
+      description: This can only be done by the logged in devise.
+      operationId: createDevise
+      requestBody:
+        description: Created devise object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Devise'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Devise'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Devise'
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
+    get:
+      tags:
+        - Devise
+      summary: Get all devises 
+      description:  Retrieve a list of all devise in the wallet application, optionally filtered by devise.
+      operationId: getDeviseId
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'  
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403' 
+        '500':
+          $ref: '#/components/responses/Response500' 
+    
+    put:
+      tags:
+        - Devise
+      summary: Update devises
+      description: This can only be done by the logged in devise.
+      operationId: updateDevise
+      parameters:
+        - name: devise
+          in: path
+          description: name that need to be deleted
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent devise in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Devise'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Devise'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Devise'
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
+    
+    delete:
+      tags:
+        - Devise
+      summary: delete devises
+      description: delete devise by ID 
+      operationId: deleteDevise
+      parameters:
+        - name: devise
+          in: query
+          description: The name that needs to be delete
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Response200'
+        '400':
+          $ref: '#/components/responses/Response400' 
+        '403':
+          $ref: '#/components/responses/Response403'
+        '500':
+          $ref: '#/components/responses/Response500'
 
 components:
   schemas:
@@ -128,6 +229,15 @@ components:
           type: string
           format: "date-time"
 
+    Devise: 
+      type: object
+      properties:
+        id: 
+          type: integer
+        rateChange:
+          type: number
+        deviseSymbol:
+          type: string
 
     Status:
       type: object
