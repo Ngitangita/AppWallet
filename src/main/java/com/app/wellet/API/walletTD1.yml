@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Library API
+  title: Wallet API
   version: 1.0.0
   description: Wallet_TD1_STD22047_STD22036
 servers:
